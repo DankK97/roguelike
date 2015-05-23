@@ -17,16 +17,17 @@ public class PlayScreen implements Screen {
    public PlayScreen(String name)
    {
       this.name = name;
-      level = 0;
+      level = 1;
       world = new World(50, 50);
       world.tiles = world.floorGenerator(world.width, world.height);
       world.tiles = world.smooth(8);
       for (int i = 0; i < 10; i++)
       {
-         world.addItemRandomPoint(new Weapon('X', "xyuper ahfuea", "danjhgejhg", new Color(255, 255, 255), 2, 2));
-         //world.addItemRandomPoint(new HealthPotion());
+         world.addItemRandomPoint(new Weapon('X', "xyuper ahfuea", "danjhgejhg", new Color(255, 255, 255), 10, 1));
+         world.addItemRandomPoint(new HealthPotion());
          world.addItemRandomPoint(new StrengthPotion());
-         //world.addItemRandomPoint(new AntidotePotion(1));
+         world.addItemRandomPoint(new AntidotePotion(1));
+         world.addEntity(new Goblin(world), world.findEmptySpace());
       }
       gui = ArtReader.get("playscreeninfo");
    }
@@ -117,6 +118,10 @@ public class PlayScreen implements Screen {
          world.tiles = world.floorGenerator(world.width, world.height);
          world.tiles = world.smooth(8);
          world.player = new Player(world, temp);
+      }
+      if(level > 5)
+      {
+         return new WinScreen();
       }
          
       return this;
