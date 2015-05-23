@@ -33,10 +33,12 @@ public class StartScreen implements Screen {
       /* Code for choosing menu items. */
       
       /* ! HELP SCREENS ! */
+      /*
       if (key.getKeyCode() == KeyEvent.VK_S)
          return new LetterScreen();
       if (key.getKeyCode() == KeyEvent.VK_R)
          return new RectangleScreen();
+      */
       /* end HELP SCREENS */
       
       switch (key.getKeyCode()){
