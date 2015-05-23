@@ -1,0 +1,4 @@
+255,128,0,of Fire
+50,50,255,of Ice
+102,0,204,of Sadness
+76,153,0,of Earth
