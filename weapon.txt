@@ -1,0 +1,10 @@
+Sword
+Hammer
+Knife
+Dagger
+Axe
+Battle Axe
+Mace
+Flail
+Uber Sword
+Cracked Sword
