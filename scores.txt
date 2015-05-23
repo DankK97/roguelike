@@ -1,0 +1,12 @@
+dak -s 100
+dke -s 98
+aca -s 80
+aca -s 70
+aca -s 65
+aca -s 60
+aca -s 50
+aca -s 45
+aca -s 40
+aca -s 30
+aca -s 20
+aca -s 5
