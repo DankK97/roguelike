@@ -19,6 +19,7 @@ public class Troll extends Monster
       this.name = "Troll";
    }
    
+   /* Needs to be fixed so that trolls move multiple spaces without jumping over player */
    public void update()
    {
       int x = Math.abs(world.player.x - this.x);
