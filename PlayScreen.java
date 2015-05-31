@@ -18,17 +18,21 @@ public class PlayScreen implements Screen {
    {
       this.name = name;
       level = 1;
-      world = new World(50, 50);
-      world.tiles = world.floorGenerator(world.width, world.height);
-      world.tiles = world.smooth(8);
-      for (int i = 0; i < 10; i++)
+      initializeWorld(level);
+      
+      for (int i = 0; i < 5; i++)
       {
          world.addItemRandomPoint(new Weapon('X', "xyuper ahfuea", "danjhgejhg", new Color(255, 255, 255), 10, 1));
          world.addItemRandomPoint(new HealthPotion());
          world.addItemRandomPoint(new StrengthPotion());
          world.addItemRandomPoint(new AntidotePotion(1));
-         world.addEntity(new Goblin(world), world.findEmptySpace());
       }
+      for(int i = 0; i < 2; i++)
+      {
+         world.addEntity(new Turtle(world), world.findEmptySpace());      
+      }
+      
+      
       gui = ArtReader.get("playscreeninfo");
    }
    
@@ -114,12 +118,13 @@ public class PlayScreen implements Screen {
       {
          Player temp = world.player;
          level++;
-         world = new World(50, 50);
-         world.tiles = world.floorGenerator(world.width, world.height);
-         world.tiles = world.smooth(8);
-         world.player = new Player(world, temp);
+         initializeWorld(level);
+         if(level % 5 == 0)
+            world.player = new Player(world, temp, new Point(25, 48));
+         else
+            world.player = new Player(world, temp, new Point((int)(world.width/2), (int)(world.height/2)));
       }
-      if(level > 5)
+      if(level > 20)
       {
          return new WinScreen();
       }
@@ -216,5 +221,21 @@ public class PlayScreen implements Screen {
    {
       if (world.player.equipSword instanceof Weapon)
          terminal.write(world.player.equipSword.symbol, 0, 0, world.player.equipSword.color);
+   }
+   private void initializeWorld(int level)
+   {
+      world = new World(50, 50);
+      // Empty room for boss battle
+      if(level %  5 == 0)
+      {
+         world.tiles = world.emptyFloorGenerator(world.width, world.height);
+      }
+      // Regular room
+      else
+      {
+         world.tiles = world.realFloorGenerator(world.width, world.height);
+         //world.tiles = world.smooth(8);         
+      }
+      // Algorithms for enemies
    }
 }
