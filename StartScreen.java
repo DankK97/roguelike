@@ -14,7 +14,6 @@ public class StartScreen implements Screen {
          titleColor = new Color((int)(Math.random() * 100 + 155), (int)(Math.random() * 255), (int)(Math.random() * 100));
          title = ArtReader.get("title");
          world = new World(100, 50);
-         world.tiles = world.smooth(8);
    }
 
    // Think of this as if its draw() in Processing
